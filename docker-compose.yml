@@ -1,0 +1,20 @@
+# Version of the docker compose syntax
+version: "3.9"
+
+
+# Then we specify services and this is a main block inside docker compose file
+# 
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000" 
+
+# This is the command that will use to run the command
